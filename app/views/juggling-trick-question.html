@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="/juggling-balls">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/check-your-answers" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h1 class="govuk-heading-l">How many balls can you juggle?</h1>
+
+              <form action="/form-handler" method="post" novalidate>
+
+                {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+                {{ govukTextarea({
+                  name: "impressive-trick",
+                  id: "impressive-trick",
+                  label: {
+                    text: "Describe your best trick",
+                    classes: "govuk-label--l",
+                    isPageHeading: true
+                  },
+                  hint: {
+                    text: "Bet it's not that impressive."
+                  }
+                }) }}
+
+
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
